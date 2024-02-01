@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        狼来了
+    </title>
+    <meta name="description" content= 这里是coderyhh的学习博客。欢迎访问！ >
+    <meta name="keywords" content= coderyhh >
+    
+<link rel="stylesheet" href="/coderyhh.github.io/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/coderyhh.github.io/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/coderyhh.github.io/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            前端圣经版本二
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="原型相关"><a href="#原型相关" class="headerlink" title="原型相关"></a>原型相关</h3><p>根据程序员约定俗成的规矩，首字母大写的一般都是构造函数，但是也有不是的：Map()、Set()、Math()</p>
+<p>构造函数的用处：用于创建一个属于当前类型的实例对象。</p>
+<p>一个函数是否是构造函数，只能通过同步函数调用方式进行区分，在函数声明的时候是无法区分的。</p>
+<h3 id="在-JS-中内存分为几部分"><a href="#在-JS-中内存分为几部分" class="headerlink" title="在 JS 中内存分为几部分"></a>在 JS 中内存分为几部分</h3><p>一共分为两部分：</p>
+<ul>
+<li>栈内存<ul>
+<li>只能存放基本数据类型，地址值。</li>
+</ul>
+</li>
+<li>堆内存<ul>
+<li>可以存储对象，可以存放基本数据类型</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意：变量和函数名是一个东西，统称为标识。</p>
+</blockquote>
+<h3 id="原型相关-1"><a href="#原型相关-1" class="headerlink" title="原型相关"></a>原型相关</h3><ol>
+<li><p>是什么？</p>
+<ul>
+<li>所有的实例对象都具有隐式原型 （_<em>proto</em>_ ）</li>
+<li>所有函数都有显示原型（prototype）</li>
+<li>实例对象的隐式原型只想构造函数的显示原型</li>
+<li>所有的原型对象都具有 constructor 属性，指向对应的构造函数。</li>
+</ul>
+<blockquote>
+<p>总结：一个原型对象，两个原型属性。</p>
+</blockquote>
+</li>
+<li><p>为什么要用？</p>
+<ul>
+<li>直接目的：可以让原型对象身上的数据，共享给所有实例对象使用。</li>
+<li>最终目的：可以将本来每个实例对象身上相同的方法，全部提取到组合成一个函数，放在原型对象上，用于节省内存空间。</li>
+</ul>
+</li>
+<li><p>怎么用？</p>
+<ul>
+<li>将数据放在原型对象身上，实例对象如果使用该属性，自身如果没有就会顺着原型链找到该原型对象，从它身上获取该属性。</li>
+<li>读取属性就会顺着原型链向上查找，设置属性不会顺着原型链向上查找，会直接复制给原型。</li>
+</ul>
+</li>
+<li><p>在哪儿用过？</p>
+<ul>
+<li>在 Vue 全局事件总线</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>每次执行依次匿名函数声明，就会创建一个全新的匿名函数。</p>
+</blockquote>
+<h3 id="new-做的事情"><a href="#new-做的事情" class="headerlink" title="new 做的事情"></a>new 做的事情</h3><ul>
+<li>自动声明形参变量，并将传入的实参数据赋值给对应的形参。</li>
+<li>自动声明 this 变量，并传入一个全新的实例对象。</li>
+<li>将当前构造函数的显示原型属性值，赋值给实例对象的隐式原型属性。</li>
+<li>默认 return 当前实例对象</li>
+</ul>
+<blockquote>
+<p>在面试过程中遇到原型打印题，需要注意：到底修改了原型对象身上的属性，还是换了原型对象</p>
+<p>什么时候换的原型对象</p>
+<ul>
+<li>在 new 之前，还是 new 之后</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>给基本数据类型添加属性是不会报错的，会出现一个包装类对象进行帮忙</p>
+<ul>
+<li>Number  –&gt; Numbet() 包装类</li>
+<li>String –&gt; String() 包装类</li>
+<li>Boolean  –&gt;  Boolean() 包装类</li>
+</ul>
+<p>如果给基本数据类型添加 &#x2F; 读取属性，就会创建一个对应的包装类对象，该对象会在该行代码执行结束之后，自动销毁，不会影响到当前的代码。</p>
+</blockquote>
+<p>如果，现在有一个变量 data，内部会存放数据，需要实现一个函数，返回该函数的数据类型</p>
+<ul>
+<li><p>解决：</p>
+<ul>
+<li>typeof	<ul>
+<li>语法：typeof data</li>
+<li>返回值的数据类型是字符串</li>
+<li>返回值<ul>
+<li>‘number’  ‘string’  ‘boolean’  ‘undefined’  ‘object’  ‘function’  ‘symbol’  ‘bigint’</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>将需要辨别的数据交给它，它可以快速明了的返回数据类型</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>无法清除的区分特色的对象数据类型，例如 object  和 array</li>
+<li>会将null 错误识别为 object<ul>
+<li>因为在 JS 底层，数据都是 2 进制存储</li>
+<li>null 和 object 前三位都是 000， 所以被误识别</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>instanceof<ul>
+<li>语法： a instanceof</li>
+<li>返回值的数据类型是布尔值</li>
+<li>返回值<ul>
+<li>true  false</li>
+</ul>
+</li>
+<li>用于判断 a 的实例对象是否为 b 数据类型</li>
+<li>优点：<ul>
+<li>判断结果很准确</li>
+</ul>
+</li>
+<li>缺点；<ul>
+<li>它只能判断 a 是不是 b 类型，无法判断 a 具体是什么类型。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>借用 Object.toString 的方法<ul>
+<li>为什么不使用 Array 的 toString， 因为数组的 toString 经过了重写，会将数组的中括号去除，并将内部所有的数据，以逗号进行拼接，成了字符串</li>
+<li>同理等同于，查看原型对象的 constructor 一样</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = []</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">toString</span>)  <span class="comment">// 不会打印name 和 age 打印的是 object object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;xiaoming&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">24</span></span><br><span class="line">&#125;</span><br><span class="line">consolr.<span class="title function_">log</span>(data.<span class="property">toString</span>) / <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">object.<span class="property">orititype</span>.<span class="property">toString</span>.<span class="title function_">call</span>(data) <span class="comment">// object Array</span></span><br><span class="line">object.<span class="property">orititype</span>.<span class="property">toString</span>.<span class="title function_">call</span>(data).<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>)[<span class="number">1</span>].<span class="title function_">replace</span>(<span class="string">&#x27;]&#x27;</span>,<span class="string">&#x27;&#x27;</span>)  <span class="comment">// Array</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语法糖：</p>
+<ul>
+<li>它是新的语法，但是底层其实还是之前的旧语法</li>
+<li>{}  –&gt; new Object</li>
+<li>[]  –&gt; new Array</li>
+<li>function() {} –&gt; new Function</li>
+</ul>
+</li>
+</ul>
+<h3 id="终极原型链相关"><a href="#终极原型链相关" class="headerlink" title="终极原型链相关"></a>终极原型链相关</h3><p>万物皆对象,除了基本数据类型以外</p>
+<p>所有的对象都是 Object 的实例对象</p>
+<p>所有的函数都是 Function 的实例对象</p>
+<ul>
+<li>包括它自己</li>
+<li>在 JS 中只有 Function 才能创建函数</li>
+</ul>
+<p>在 JS中, 用 C语言实现的东西:Object  Function  Function.prototype 这三个</p>
+<p>在 JS 中, 强行修改了四条线</p>
+<ol>
+<li>Function._<em>propop</em>_ &#x3D;&#x3D;&#x3D; Function.prototype<ul>
+<li>身份证明<ul>
+<li>如果没有这条线,那么 Function就不在是函数了</li>
+</ul>
+</li>
+<li>使用方法<ul>
+<li>所有函数共享的方法都会放在 Function.ptototype 上, 如果没有这条线, 那么 Function 将无法使用 call  bind  apply 等等方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Object._<em>proto</em>_ &#x3D;&#x3D;&#x3D; Function.prototype</li>
+</ol>
+<ul>
+<li>同上</li>
+</ul>
+<ol start="3">
+<li>Function._<em>proto</em>_ &#x3D;&#x3D;&#x3D; Object.ptoyotype<ul>
+<li>如果没有这条线, 那么原型链将会出现两个终点, 那么函数就不在是对象了</li>
+</ul>
+</li>
+<li>Object._<em>proto</em>_ &#x3D;&#x3D;&#x3D; null<ul>
+<li>如果没有这条线, 那么原型链将会进入死循环, 无论是那个实例对象查找属性, 都会在 Object 卡住</li>
+</ul>
+</li>
+</ol>
+<h3 id="什么是伪数组"><a href="#什么是伪数组" class="headerlink" title="什么是伪数组"></a>什么是伪数组</h3><ol>
+<li>使用下标作为属性名</li>
+<li>具有 length 属性</li>
+<li>伪数组不能用数组方法<ul>
+<li>伪数组的原型链上没有出现 Array 的原型对象</li>
+</ul>
+</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>方式一:  基于构造函数的继承,  原型链 + 借用构造函数组合式继承</p>
+<ul>
+<li>借用父类构造函数 Person.call(this, name, age)</li>
+<li>让子类的原型为父类的实例 Student.prototype &#x3D; new Person()</li>
+<li>让子类原型的构造器为子类型 Student.prototype.constructor &#x3D; Student</li>
+</ul>
+<p>方式二:  class 类继承</p>
+<ul>
+<li>子类 exteds 父类 class  Tracher  extends Person2</li>
+<li>子类构造器中调用父类结构:  super(name, age)</li>
+</ul>
+<h3 id="作用声明域"><a href="#作用声明域" class="headerlink" title="作用声明域"></a>作用声明域</h3><p>在编程界,  作用域一共分为两种</p>
+<ol>
+<li>词法作用域 (静态作用域)<ul>
+<li>函数的作用域声明位置有关,  与调用位置无关, JS 就是静态作用域</li>
+</ul>
+</li>
+<li>动态作用域<ul>
+<li>函数的作用域与声明位置无关, 与调用位置有关</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>在 JS 中, 只有词法作用域, 没有动态作用域</p>
+</blockquote>
+<p>作用域就是用来约束变量的作用范围,  作用域其实就是变量的查找规则</p>
+<p>预解析规则(变量提升)</p>
+<ol>
+<li>变量提升<ul>
+<li>变量提升是局部提升, 它会将标识的声明提升到最顶端, 标识的赋值会留在原地</li>
+</ul>
+</li>
+<li>函数提升<ul>
+<li>函数提升是整体提升, 声明和赋值都会提升到最顶端</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>注意: 区分清楚标识声明和标识赋值</p>
+</blockquote>
+<p>例如 var a &#x3D; 1</p>
+<ul>
+<li>标识声明 var a</li>
+<li>标识赋值 a &#x3D; 1</li>
+</ul>
+<p>函数表达式提升的是变量提升, 只会将标识声明提前, 赋值将会留在原地</p>
+<p>预解析的优先级:  函数优先,  函数提升优先于变量提升</p>
+<p>预解析的范围:   </p>
+<ul>
+<li>会将标识声明提升到当前作用域的最顶端, 不会穿透作用域</li>
+</ul>
+<blockquote>
+<p>注意:  变量查找都是从内向外查找</p>
+</blockquote>
+<h3 id="作用域分类"><a href="#作用域分类" class="headerlink" title="作用域分类"></a>作用域分类</h3><ol>
+<li>全局作用域<ul>
+<li>它是 JS 最大的顶级作用域</li>
+<li>所有人都可以获取到他身上的数据</li>
+<li>扩展:  全局作用域其实也是函数作用域,  因为 JS 引擎会将主线程代码放在一个匿名函数中调用执行</li>
+<li>但是它是一个最顶级的函数, 所以所有人都可以用</li>
+</ul>
+</li>
+<li>局部作用域 (函数作用域)<ul>
+<li>与函数有关,  每个函数都有自己独立的一片作用域</li>
+<li>内部的数据不能被外侧访问</li>
+</ul>
+</li>
+<li>块级作用域<ul>
+<li>只要使用 const  let  就会出现 ES6 新增的块级作用域</li>
+<li>注意点:  let  和 const 需要根据外层的大括号进行配合,  生成块级作用域</li>
+<li>在同一个大括号中,  多次使用 let  const  都只会生成一个块级作用域</li>
+</ul>
+</li>
+<li>形参默认值( es6新增语法)<ul>
+<li>只要函数使用了形参默认值, 那么函数内部的代码就会在新生成的块级作用域中执行<ul>
+<li>注意:  函数内部在块级作用域中,  函数形参还在函数作用域中</li>
+<li>函数被调用, 如果函数内部和函数形参的名字相同, 那么他们的初始值也会相同, 函数形参会将自己的值传递一份给函数内部同名变量</li>
+</ul>
+</li>
+<li>作用域是一套规则,  一套定义(并不是真正意义存在的)<ul>
+<li>变量对象就是作用域实现的结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ol>
+<li>闭包的产生条件<ul>
+<li>闭包是一种引用关系<ul>
+<li>必须具有内外函数嵌套</li>
+<li>内部函数必须使用外部函数的变量</li>
+</ul>
+</li>
+<li>闭包分为两种<ul>
+<li>有效闭包:  外部函数被调用的时候, 会将内部函数返回出去, 那么这个闭包就可以持续保留, 称为有效闭包</li>
+<li>无效闭包:  外部函数被调用的时候, 没有将内部函数返回出去, 那么这个闭包就会快速销毁,  称为无效闭包</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: coderyhh | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/coderyhh.github.io/libs/jquery.min.js"></script>
+
+
+<script src="/coderyhh.github.io/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/coderyhh.github.io/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

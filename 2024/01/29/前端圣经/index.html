@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        狼来了
+    </title>
+    <meta name="description" content= 这里是coderyhh的学习博客。欢迎访问！ >
+    <meta name="keywords" content= coderyhh >
+    
+<link rel="stylesheet" href="/coderyhh.github.io/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/coderyhh.github.io/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/coderyhh.github.io/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            前端圣经
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="讲讲HTML中的语义化标签"><a href="#讲讲HTML中的语义化标签" class="headerlink" title="讲讲HTML中的语义化标签"></a>讲讲HTML中的语义化标签</h3><p>概念题：答法如下</p>
+<ol>
+<li>是什么：语义化标签是一种写HTML标签的方法论 &#x2F; 方式。</li>
+<li>怎么做：实现方法是遇到标题就用h1 ~ h6。</li>
+<li>解决了什么问题：明确 HTML 的书写方法论。</li>
+<li>优点是：一、适合搜索引擎检测，二、适合人类阅读，利于团队维护。</li>
+<li>缺点是：没有。</li>
+<li>怎么解决缺点：无需解决。</li>
+</ol>
+<blockquote>
+<p>总结：是什么、怎么做、解决了什么问题、优点是、缺点是、怎么解决缺点。</p>
+</blockquote>
+<h3 id="HTML-5-有哪些新标签？"><a href="#HTML-5-有哪些新标签？" class="headerlink" title="HTML 5 有哪些新标签？"></a>HTML 5 有哪些新标签？</h3><p>纯记忆型题目，记住不要提自己不熟悉的标签，很可能会变成下一道题</p>
+<p>文章相关：header、main、footer、nav、section、acticle、figure、mark</p>
+<p>多媒体：video、audio、svg、canvas</p>
+<p>表单相关：type&#x3D;email   type&#x3D;tel</p>
+<h3 id="Canvas-和-SVG-的区别是什么？"><a href="#Canvas-和-SVG-的区别是什么？" class="headerlink" title="Canvas 和 SVG 的区别是什么？"></a>Canvas 和 SVG 的区别是什么？</h3><p>区分题：答题思路为：先说一，再说二，最后说不同点。</p>
+<ol>
+<li>Canavs 主要是用笔刷来绘制 2D 图形的。</li>
+<li>SVG 主要是用标签来绘制不同规则矢量图的。</li>
+<li>相同点：都是主要用来画 2D 图形的。</li>
+<li>不同点 Canvas 画的是位图， SVG 画的是矢量图。</li>
+<li>不同点 SVG 节点过多时渲染慢，Canvas 性能更好一些，但写起来更复杂。</li>
+<li>不同点 SVG 支持分层和事件，Canvas 不支持，但是可以用库实现。</li>
+</ol>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="BFC-是什么"><a href="#BFC-是什么" class="headerlink" title="BFC 是什么"></a>BFC 是什么</h3><p>概念题：答题思路还是，是什么、怎么做、解决了什么问题、优点是、缺点是、怎么解决缺点。</p>
+<p>是什么：避免回答，直接把 BFC 翻译成中文，&#x3D;&#x3D;块级格式化上下文&#x3D;&#x3D; 即可，千万别解释。</p>
+<p>怎么做：背诵 BFC 触发条件，虽然 MDN 的文章列举了所以触发条件，但是背几个就够了。</p>
+<ul>
+<li>浮动元素 （元素的 float 不是 none）。</li>
+<li>绝对定位元素 （元素的 position 为 absolute 或 fixed）。</li>
+<li>行内块元素。</li>
+<li>overflow 值为 visible 的块元素。</li>
+<li>弹性元素（display 为 flex 或 inline-flex元素的直接子元素）</li>
+</ul>
+<p>解决了什么问题：</p>
+<ol>
+<li>清除浮动（为什么不用 .clearfix）</li>
+<li>防止方向 margin 合并</li>
+<li>某些古老的布局方式会用到。( 已过时 )</li>
+</ol>
+<h3 id="如何实现垂直居中"><a href="#如何实现垂直居中" class="headerlink" title="如何实现垂直居中"></a>如何实现垂直居中</h3><p>如果 .parent 的 height 不写， 你只需要padding: 10px 0； 就能将 。child垂直居中</p>
+<p>如果 .parent 的height写死了， 就很难把  .child居中</p>
+<p>忠告：能不写 height 就千万别写 height</p>
+<ol>
+<li>table 自带功能</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">600px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">1px</span> solid green;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span></span><br><span class="line">        一段文字，一段文字，一段文字coderyhh</span><br><span class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>100%高度的 afrer  before 加上 inline block 这个方法， 还有一个优化版本</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">3px</span> solid red;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">600px</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">3px</span> solid black;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.parent</span> <span class="selector-class">.before</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">outline</span>: <span class="number">3px</span> solid green;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.parent</span> <span class="selector-class">.after</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">outline</span>: <span class="number">3px</span> solid red;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sapn</span> <span class="attr">class</span>=<span class="string">&quot;before&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">sapn</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span></span><br><span class="line">        一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字			coderyhh一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;after&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>div 装成 table</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span><span class="selector-class">.teble</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">display</span>: table;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">600px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span><span class="selector-class">.td</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 把元素变成td */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">display</span>: table-cell;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">1px</span> solid blue;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 写上这个 */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">border</span>: <span class="number">10px</span> solid black;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;teble&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;td&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span></span><br><span class="line">        一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh一段文字，一段文字，一段文字coderyhh</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="4">
+<li><p>margin-top  -50%</p>
+</li>
+<li><p>translate  -50%</p>
+</li>
+<li><p>absolute  margin  auto</p>
+</li>
+<li><p>flex</p>
+</li>
+</ol>
+<h3 id="CSS选择器优先级如何确定"><a href="#CSS选择器优先级如何确定" class="headerlink" title="CSS选择器优先级如何确定"></a>CSS选择器优先级如何确定</h3><p>实践题，写博客总结。</p>
+<p>如果记不住，可以记住下面</p>
+<ol>
+<li>选择器越具体，优先级越高。</li>
+<li>相同优先级， 出现在后面的，覆盖前面的。</li>
+<li>属性后面加 &#x3D;&#x3D;!important&#x3D;&#x3D; 的优先级最高，但是要少用</li>
+</ol>
+<h3 id="如何清除浮动"><a href="#如何清除浮动" class="headerlink" title="如何清除浮动"></a>如何清除浮动</h3><p>方法一：给父元素加上 .clearfix</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after &#123;</span><br><span class="line">	content: &#x27;&#x27;</span><br><span class="line">	display: block /* 或者 table */</span><br><span class="line">	clear: both</span><br><span class="line">&#125;</span><br><span class="line">.clearfix &#123;</span><br><span class="line">	zoome: 1 /* IE 兼容 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>方法二：给父元素加上 overflow: hidden</p>
+<h3 id="两种盒模型（box-sizing）的区别"><a href="#两种盒模型（box-sizing）的区别" class="headerlink" title="两种盒模型（box-sizing）的区别"></a>两种盒模型（box-sizing）的区别</h3><p>区分题：答题思路为：先说一、再说二、最后说不同点</p>
+<p>第一种盒模型是 content-box，即width 指定的是 content 区域的宽度，而不是实际的宽度，公式为：</p>
+<blockquote>
+<p>实际宽度 &#x3D; width + padding + border</p>
+</blockquote>
+<p>第二种盒模型是 border-box，即 width 指定的是左右边框外的距离，公式为：</p>
+<blockquote>
+<p>实际宽度 &#x3D; width</p>
+</blockquote>
+<p>相同点：都是用来指定宽度的。</p>
+<p>不同点：border-box 更好用</p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h3 id="Js-的数据类型有哪些？"><a href="#Js-的数据类型有哪些？" class="headerlink" title="Js 的数据类型有哪些？"></a>Js 的数据类型有哪些？</h3><p>纯记忆题：答案有 8 个词。</p>
+<p>字符串、数字、布尔、未定义、空 、大整数、符号、对象。</p>
+<p>string、number、boolean、undefined（非对象为空）、null（对象为空）、bigint、symbol、object。</p>
+<blockquote>
+<p>但是：数组、函数、日期。这些是类。不是类型</p>
+</blockquote>
+<h3 id="原型链是什么？"><a href="#原型链是什么？" class="headerlink" title="原型链是什么？"></a>原型链是什么？</h3><p>大概念题：答题思路为大概化成小概念（分割），抽象化成具体（举例）</p>
+<p>假设我们有一个人普通的对象 x&#x3D;{} ， 这个 x 会有一个隐藏属性， 叫做 __propt__， 这个属性会指向 Object.prototype。</p>
+<blockquote>
+<p>x._<em>proto</em>_ &#x3D;&#x3D;&#x3D; Object.prototype &#x2F;&#x2F; 原型。</p>
+</blockquote>
+<p>此时，我们说的 x 的原型就是 Object。prototype，或者说 Object.prototype 是 X 的原型。</p>
+<p>而这个 _<em>proto</em>_ 属性的唯一作用就是用来指向 X 的原型的。</p>
+<p>如果没有 _<em>proto</em>_ 属性，x 就不知道自己的原型是谁了。</p>
+<h3 id="接下来我们说说原型链"><a href="#接下来我们说说原型链" class="headerlink" title="接下来我们说说原型链"></a>接下来我们说说原型链</h3><p>假设有一个数组对象 a&#x3D;[]，这个 a 也会有一个隐藏属性，叫做__proto__，这个属性会指向 Array.prototype</p>
+<blockquote>
+<p>a._<em>proto</em>_ &#x3D; Array.prototype</p>
+</blockquote>
+<p>此时，我们说 a 的原型是 Array.prototype，跟上面的 x 一样， 但又有一点不一样， 那就是 Array.prototype也有一个隐藏属性_<em>proto</em>_ 指向Object.prototype</p>
+<blockquote>
+<p>用 x 表示 Array.prototype</p>
+<p>&#x2F;&#x2F; Array.prototype &#x3D;&#x3D;&#x3D; Object.prototype</p>
+<p>x._<em>proto</em>_ &#x3D;&#x3D;&#x3D; Object.prototype</p>
+</blockquote>
+<p>这样一来，a 就有两层原型：</p>
+<ol>
+<li>a 的原型是 Array.prototype</li>
+<li>a 的原型的原型就是 Object.prototype</li>
+</ol>
+<p>于是就通过隐藏属性 _<em>proto</em>_ 形成了一个链条</p>
+<blockquote>
+<p>a &#x3D;&#x3D;&gt; Array.prototype  &#x3D;&#x3D;&gt; Object.prototype</p>
+</blockquote>
+<p>这就是原型链。  </p>
+<p>怎么做：</p>
+<p>看起来只要改写 x 的隐藏属性 _<em>proto</em>_ 就可以改变 x 的原型（链）</p>
+<blockquote>
+<p>x._<em>proto</em>_ &#x3D; 原型</p>
+</blockquote>
+<p>但是这不是标准推荐的写法，为了设置 x._<em>proto</em>_ 推荐的写法是</p>
+<blockquote>
+<p>const x &#x3D; Object.create</p>
+<p>&#x2F;&#x2F; 或者</p>
+<p>const x &#x3D; new 构造函数()  &#x2F;&#x2F; 会导致 x._<em>proto</em>_  &#x3D;&#x3D;&#x3D; 构造函数.prototype</p>
+</blockquote>
+<p>解决了什么问题：</p>
+<p>在没有 class 的情况下实现 【继承】。以 a &#x3D;&#x3D;&#x3D;&gt; Array.prototype ==&#x3D;&gt; Object.prototype 为例。</p>
+<ol>
+<li>a 是 Array 的实例，a 拥有 Array.prototype 里的属性。</li>
+<li>Array 继承了 Object （注意专业术语的使用）。</li>
+<li>a 是 Object 的间接实例，a 拥有 Object. prototype 里的属性</li>
+</ol>
+<p>这样一来 a 就即拥有 Array.prototype 里的属性，又拥有 Object.prototype 里的属性。</p>
+<p>优点：</p>
+<ul>
+<li>简单，优雅</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>跟 class 相比， 不支持私有属性</li>
+</ul>
+<p>怎么解决缺点：</p>
+<ul>
+<li>使用 class，那是 class 是 ES6引入的。</li>
+</ul>
+<h3 id="这段代码中的-this-是多少"><a href="#这段代码中的-this-是多少" class="headerlink" title="这段代码中的 this 是多少"></a>这段代码中的 this 是多少</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> length = <span class="number">4</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">length</span>) <span class="comment">// 打印出什么   打印出 4</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">length</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="title function_">method</span>(<span class="params">callback</span>) &#123;</span><br><span class="line">      <span class="title function_">callback</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  obj.<span class="title function_">method</span>(callback, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="new-做了什么"><a href="#new-做了什么" class="headerlink" title="new 做了什么"></a>new 做了什么</h3><ol>
+<li><p>创建临时对象</p>
+</li>
+<li><p>绑定原型</p>
+</li>
+<li><p>指定 this &#x3D; 临时对象</p>
+</li>
+<li><p>执行构造函数</p>
+</li>
+<li><p>返回临时对象</p>
+</li>
+</ol>
+<h3 id="JS-的立即执行函数是什么"><a href="#JS-的立即执行函数是什么" class="headerlink" title="JS 的立即执行函数是什么"></a>JS 的立即执行函数是什么</h3><p>概念题 【是什么、怎么做、解决了什么问题、优点是、缺点是、怎么解决缺点】</p>
+<p>是什么：</p>
+<ul>
+<li>声明一个匿名函数，然后立即执行它，这种做法就是立即执行函数</li>
+</ul>
+<p>怎么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()) <span class="comment">// 用括号把整个表达式抱起来</span></span><br><span class="line">(<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125;) () <span class="comment">// 用括号把函数抱起来</span></span><br><span class="line">!<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()  <span class="comment">// 求反，我们不在意值是多少。只想通过语法检查</span></span><br><span class="line">-<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()</span><br><span class="line">+<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()</span><br><span class="line">~<span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()</span><br><span class="line"><span class="keyword">void</span> <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="title function_">alert</span>(<span class="string">&#x27;我是匿名函数&#x27;</span>) &#125; ()</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="keyword">return</span> <span class="string">&#x27;我是匿名函数&#x27;</span> &#125; ()</span><br></pre></td></tr></table></figure>
+
+<p>上面每一行代码都是一个立即执行函数。</p>
+<p>解决了什么问题</p>
+<ul>
+<li>在 ES6 之前，只能通过它来 创建局部作用域</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>兼容性好</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>丑</li>
+</ul>
+<p>怎么解决缺点</p>
+<ul>
+<li>使用 ES6 的 block + let 语法即可。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="string">&#x27;我是局部变量&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 能读取a</span></span><br><span class="line">&#125;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 不能读取a</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="JS-的闭包是什么"><a href="#JS-的闭包是什么" class="headerlink" title="JS 的闭包是什么"></a>JS 的闭包是什么</h3><p>论述题【是什么、怎么做、解决了什么问题、优点是、缺点是、怎么解决缺点】</p>
+<p>是什么：</p>
+<ul>
+<li>闭包是 JS 的一种语法特性</li>
+</ul>
+<blockquote>
+<p>闭包 &#x3D; 函数 + 自由变量</p>
+</blockquote>
+<p>对一个函数来说，变量分为：全局变量、本地变量、自由变量</p>
+<p>怎么做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span> () &#123;  <span class="comment">// 访问了外部变量的函数</span></span><br><span class="line">    count + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把上面的代码放在 【非全局环境】里，就是闭包。</p>
+<blockquote>
+<p>注意：闭包不是 count， 闭包也不是 add，闭包是 count + add 组成的整体</p>
+</blockquote>
+<p>怎么制造一个 【非全局环境】呢？答案是立即执行函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count </span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;  <span class="comment">// 访问了外部变量的函数</span></span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是这个代码什么用都没有，所以需要 return add </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add2 = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;  <span class="comment">// 访问了外部变量的函数</span></span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时 add2 其实就是 add 我们可以调用 add2</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">add2</span>()</span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line"><span class="title function_">add</span>()</span><br><span class="line"><span class="comment">// 相当于</span></span><br><span class="line">count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>至此， 我们就实现了一个完整的闭包应用</p>
+<blockquote>
+<p>注意：闭包 ≠ 闭包的应用</p>
+</blockquote>
+<p>解决了什么问题：</p>
+<ol>
+<li>避免污染全局环境（因为用的是局部变量）</li>
+<li>提供对局部变量的间接访问 （因为只能 count +&#x3D; 1，不能 count -&#x3D; 1）</li>
+<li>维持变量，使其不被垃圾回收</li>
+</ol>
+<p>优点：</p>
+<ul>
+<li>简单，好用</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>闭包使用不当， 可能会造成内存泄漏。</li>
+</ul>
+<blockquote>
+<p>注意：重点是 【使用不当】，不是闭包</p>
+</blockquote>
+<p>怎么解决缺点：</p>
+<ul>
+<li>不用，少用，慎用。</li>
+</ul>
+<h3 id="JS-如何实现类"><a href="#JS-如何实现类" class="headerlink" title="JS 如何实现类"></a>JS 如何实现类</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Dog</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">leg</span> = <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">king</span> = <span class="string">&#x27;狗&#x27;</span></span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">say</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`汪汪汪 ~ 我是<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, 我还有<span class="subst">$&#123;<span class="variable language_">this</span>.leg&#125;</span>条腿`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Dog</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">run</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.leg&#125;</span>条腿跑起来`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> d1 = <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="string">&#x27;哮天&#x27;</span>)  <span class="comment">// Dog 函数就是一个类</span></span><br><span class="line">d1.<span class="title function_">say</span>()</span><br></pre></td></tr></table></figure>
+
+<p>请试着实现一个 Chicken 类， 没有 name  会 say 和 fly</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: coderyhh | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="">
+<input type="hidden" id="valine_appKey" value="">
+
+<script src="/coderyhh.github.io/libs/jquery.min.js"></script>
+
+
+<script src="/coderyhh.github.io/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/coderyhh.github.io/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
