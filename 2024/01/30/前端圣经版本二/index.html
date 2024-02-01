@@ -297,7 +297,8 @@
 </li>
 </ol>
 <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ol>
-<li>闭包的产生条件<ul>
+<li><p>闭包的产生条件</p>
+<ul>
 <li>闭包是一种引用关系<ul>
 <li>必须具有内外函数嵌套</li>
 <li>内部函数必须使用外部函数的变量</li>
@@ -310,7 +311,401 @@
 </li>
 </ul>
 </li>
+<li><p>闭包的创建时机</p>
+<ul>
+<li>在外部函数被调用的时候, 就会产生闭包</li>
+<li>一个函数一次调用只会创建一个闭包对象<ul>
+<li>因为闭包对象与执行上下文有关</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>闭包的优点</p>
+<ul>
+<li>延长局部变量的生命周期<ul>
+<li>外部函数的变量会存储于外部函数的执行上下文中, 但是外部函数执行结束的时候,  对应的执行上下文会销毁,  会导致存在内部的变量也被销毁</li>
+<li>但是内部函数还需要使用外部变量, 所以 JS 使用闭包将该变量缓存起来</li>
+</ul>
+</li>
+<li>可以实现 jS模块化<ul>
+<li>通过将数据存放在函数作用域中, 来保证该数据的安全性, 防止外侧其他开发者修改数据,  并且会向外提供一些修改该数据的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>闭包的缺点</p>
+<ul>
+<li>由于闭包会缓存本该死去的变量,  会导致无法正常释放, 会被继续占用</li>
+<li>内存泄漏<ul>
+<li>在平常实现功能的时候, 可能付出了更多内存空间才能实现某个功能<ul>
+<li>简单的说就是内有管理好内存, 浪费了内存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内存溢出<ul>
+<li>平常浪费的内存太多了, 超过了计算机内存上限, 导致计算机宕机,  无法使用</li>
+</ul>
+</li>
+<li>内存泄漏我们可以接受,  内存溢出肯定不能接受</li>
+</ul>
+</li>
+<li><p>如何解决闭包的副作用</p>
+<ul>
+<li><p>尽量少使用闭包</p>
+</li>
+<li><p>及时释放不用的闭包</p>
+<ul>
+<li><p>为什么闭包不会被释放</p>
+<ul>
+<li>由于内部函数还需要使用闭包中的变量,  所以闭包不能被释放</li>
+<li>内部函数因为被外部变量引用着,  所以内部函数不会被释放</li>
+</ul>
+<blockquote>
+<p>注意: </p>
+<ul>
+<li>如果内部函数具有多个变量引用它, 需要将全部都释放掉才可以</li>
+<li>多个内部函数都是用到外部函数的变量 , 那么他们会共享一个闭包对象, 这个闭包对象中, 会存放所有缓存变量</li>
+<li>如果多个内部函数都在引用闭包对象, 记得要所有的内部函数都释放掉</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>将存储内部函数的变量值更新,  将内部函数对的引用进行释放, 内部函数被释放,  就会导致闭包无人使用,  那么闭包也会被释放 比如 (fn  &#x3D;  null)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>闭包是什么</p>
+<ul>
+<li>闭包是一个对象<ul>
+<li>闭包内部会存储需要使用到变量和它的变量值</li>
+</ul>
+</li>
+<li>官方定义<ul>
+<li>闭包是外部函数作用域和内部函数的词法环境组成</li>
+</ul>
+</li>
+<li>简单点说<ul>
+<li>闭包是外部函数的变量对象和内部函数的代码生成的对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>闭包的使用场景</p>
+<ul>
+<li>防抖节流</li>
+<li>删除后台管理,  品牌商品功能</li>
+</ul>
+</li>
 </ol>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><ul>
+<li>如果一个对象没有人使用 &#x2F; 引用它,  垃圾回收机制就会将他占用的内存释放</li>
+</ul>
+<h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><ul>
+<li>执行上下文中会存放当前函数中 this 指向,  return 结果,  以及变量对象<ul>
+<li>变量对象是用来收集当前函数中, 声明的所有变量以及变量值得对象</li>
+</ul>
+</li>
+<li>创建时间<ul>
+<li>在函数调用的时候, 就会创建一个全新的执行上下文<ul>
+<li>这个执行上下文推入执行栈中, 这个过程俗称 (入栈)</li>
+<li>栈是数组实现的,  先进后出,  后进先出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>销毁时机<ul>
+<li>在函数调用结束的时候, 就会销毁对应的执行上下文<ul>
+<li>这个过程俗称 (出栈)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="this-指向"><a href="#this-指向" class="headerlink" title="this 指向"></a>this 指向</h3><p>this 能判断出函数中的 this 是谁</p>
+<p>能控制函数 this 是需要的特定对象</p>
+<p>this</p>
+<ul>
+<li>它是 JS 引擎的关键字, 也就是禁止开发者声明, this 它的本质就是一个变量</li>
+<li>this 中的值, 与函数调用方式有关,  与声明位置无关,  调用位置都无关</li>
+<li>this 很像形参,  像是浏览器专用的形参<ul>
+<li>形参:  函数自动声明  形参的值是开发者传入的</li>
+<li>this:  函数自动声明   this 的值是浏览器传入的</li>
+</ul>
+</li>
+</ul>
+<p>常见的this 指向</p>
+<ul>
+<li>this 内部存储的是一个对象, 这个对象代表着当前函数的调用者</li>
+<li>普通调用 window<ul>
+<li>例如 fn()</li>
+<li>严格模式下, 这个 this 是undefined</li>
+<li>普通模式下, this 如果是 undefined 就会被修改为 window</li>
+</ul>
+</li>
+<li>隐士调用 方法的调用者<ul>
+<li>例如 obj.fn()</li>
+<li>无论代码找了多少层属性, 都只要看方法是在谁身上就行</li>
+</ul>
+</li>
+<li>构造函数调用 全新的实例对象<ul>
+<li>例如 new fn()</li>
+</ul>
+</li>
+<li>显示调用 强行指定的对象  call  apply  bind<ul>
+<li>例如  fn.call(obj)  fn.apply(obj)   fn.bind(obj)</li>
+</ul>
+</li>
+<li>比较特殊的this 指向<ul>
+<li>事件回调函数<ul>
+<li>this 是事件源, 绑定的事件元素</li>
+</ul>
+</li>
+<li>Vue<ul>
+<li>methods  computd  watch  生命周期钩子函数等中的 this 都是当前组件的实例对象</li>
+</ul>
+</li>
+<li>小程序<ul>
+<li>事件回调函数, 生命周期钩子函数中 的this 是当前页面的实例对象</li>
+</ul>
+</li>
+<li>定时器<ul>
+<li>this 是window</li>
+</ul>
+</li>
+<li>箭头函数<ul>
+<li>它的this 与声明位置有关, 它会使用上级作用域的this<ul>
+<li>它没有属于自己的this</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>请问:  箭头函数能被 call  apply  bind 方法改变 this 指向<ul>
+<li>不能,  因为箭头函数没有 this  使用这三个方法不会报错,  但是没有效果</li>
+</ul>
+</li>
+<li>请问:  箭头函数能否被构造调用<ul>
+<li>不能 会报错 因为它不是构造器</li>
+</ul>
+</li>
+<li>请问箭头函数是否拥有自己的原型对象<ul>
+<li>没有</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>异步:  将一件事情放到未来某个时间去做,  这就是异步 (懒),  将一个函数延迟一段时间执行, 这就是异步</p>
+<p>什么叫回调函数</p>
+<ul>
+<li>我创建的</li>
+<li>我没吊用</li>
+<li>它执行了</li>
+</ul>
+<p>回调函数一定是异步的吗</p>
+<ul>
+<li>不一定是异步的, 数组的回调函数, Promise 的回调函数都是同步执行的</li>
+</ul>
+<p>JS 中异步任务分为几种</p>
+<ul>
+<li>宏任务</li>
+<li>微任务</li>
+</ul>
+<p>异步代码一定晚于主线程代码</p>
+<p>存储多个宏任务队列称为宏任务队列</p>
+<p>存储多个微任务队列称为微任务队列</p>
+<p>队列</p>
+<ul>
+<li>数据类型:  数组</li>
+<li>特点:  先进先出,  后进后出</li>
+</ul>
+<p>栈</p>
+<ul>
+<li>数据类型:  数组</li>
+<li>特点:  先进后出, 后进先出</li>
+</ul>
+<p>执行顺序:  先执行主线程代码  然后清空微任务队列, 执行宏任务</p>
+<blockquote>
+<p>注意: 微任务队列都是清空, 不清空不能走,  宏任务是执行, 每一次执行完宏任务都要去看一下微任务是否有东西, 有就清空</p>
+</blockquote>
+<p>宏任务</p>
+<ul>
+<li>定时器</li>
+<li>事件回调</li>
+<li>ajax 相关</li>
+</ul>
+<p>微任务</p>
+<ul>
+<li>Promise 的 .then 方法</li>
+<li>mutationObserver( H5 新增特性)<ul>
+<li>它可以监视页面上某个节点的结构变化, 只要发生变化就会触发对应的回调函数</li>
+</ul>
+</li>
+<li>以上这些都是开启宏任务和微任务的手段</li>
+</ul>
+<p>请问 JS 中 宏任务优先还是微任务优先</p>
+<ul>
+<li>如果将 script 当做第一个宏任务看,  就是宏任务优先</li>
+<li>如果将 script 不当做宏任务看, 就是微任务优先</li>
+</ul>
+<h3 id="浏览器多线程"><a href="#浏览器多线程" class="headerlink" title="浏览器多线程"></a>浏览器多线程</h3><p>JS 是单线程,  浏览器是多线程</p>
+<ul>
+<li>浏览器是一个多线程多进程的东西<ul>
+<li>每个标签页都是全新的进程</li>
+</ul>
+</li>
+<li>浏览器中具有<ul>
+<li>负责解析 JS 代码的线程  JS线程</li>
+<li>负责页面渲染的线程  CUI 线程</li>
+</ul>
+</li>
+<li>以上两个线程是互斥的, 同时一个时间只能一个人工作, 要么渲染页面, 要么执行代码</li>
+</ul>
+<p>页面渲染流程</p>
+<ul>
+<li>执行主线程代码</li>
+<li>清空微任务队列</li>
+<li>GUI 线程渲染页面</li>
+<li>执行下一个宏任务</li>
+</ul>
+<p>更新页面流程</p>
+<ul>
+<li>清空微任务队列</li>
+<li>GUI 渲染页面</li>
+<li>执行宏任务</li>
+</ul>
+<p>请说说对挂载和渲染的了解</p>
+<ul>
+<li>挂载和渲染不是同一个东西<ul>
+<li>挂载:  是将节点放在 HML  节点中</li>
+<li>渲染:  根据最新的 HTML 节点绘制内容到浏览器上给用户观看</li>
+</ul>
+</li>
+<li>挂载是同步的   渲染是异步的</li>
+</ul>
+<p>问: 明明有了宏任务,  为什么还要增加微任务</p>
+<ul>
+<li>ES6 开始才正式新增微任务</li>
+<li>如果同样修改 100 万次页面,  100 万个微任务都修改页面, 会导致页面只渲染一次<ul>
+<li>微任务相当于给页面做了防抖操作,  页面只会根据最后一次的结果渲染页面</li>
+</ul>
+</li>
+<li>如果100 万个宏任务都修改页面, 会导致页面渲染 100 万次</li>
+</ul>
+<blockquote>
+<p>拓展:  Vue更新 DOM 也是微任务执行的</p>
+</blockquote>
+<h3 id="浏览器事件轮询机制"><a href="#浏览器事件轮询机制" class="headerlink" title="浏览器事件轮询机制"></a>浏览器事件轮询机制</h3><ul>
+<li>JS 是通过事件循环机制来实现的 JS是单线程</li>
+<li>异步要基于回调来实现</li>
+<li>event loop 就是异步回调实现的原理</li>
+</ul>
+<p>事件轮训机制两个重要部分</p>
+<ul>
+<li>在分线程执行的管理模块,  定时器  ajax  dom 事件</li>
+<li>保持待执行的回调函数的事件队列  任务队列</li>
+</ul>
+<blockquote>
+<p>小总结: 浏览器中具有许多分线程帮忙, 所以 JS引擎负责的事情就相对比较少.</p>
+<p>JS 线程会将定时器,  Ajax 请求等任务交个对应的管理模块进行管理</p>
+<p>满足条件之后, 会自动往对应的任务队列中放入回调函数</p>
+</blockquote>
+<p>浏览器具有一个宏任务队列,  一个微任务队列</p>
+<h3 id="Node轮训机制"><a href="#Node轮训机制" class="headerlink" title="Node轮训机制"></a>Node轮训机制</h3><p>事件轮询机制主要分为六个阶段  这六个阶段是六个宏任务队列</p>
+<ul>
+<li>timers  定时器阶段  重要   它是事件轮询的起点<ul>
+<li>计时和执行点到定时器回调函数</li>
+</ul>
+</li>
+<li>pending  callbacks<ul>
+<li>某些操作系统. 如 lcp 错误类型的回调函数</li>
+</ul>
+</li>
+<li>idle prepare<ul>
+<li>准备工作</li>
+</ul>
+</li>
+<li>poll 轮询阶段 (轮询队列) 重要  专门复杂 I &#x2F; O 相关的异步任务  它是事件轮询的休息区<ul>
+<li>如果轮询队列不为空, 依次同步取出轮询队列中第一个回调执行, 直到轮询队列为空或者达到系统量大的限制</li>
+<li>如果轮询队列为空<ul>
+<li>如果之前设置 setImmediate函数<ul>
+<li>直接进入下一个check 阶段</li>
+</ul>
+</li>
+<li>如果之前没有设置 setImmediate 函数<ul>
+<li>当前 poll 阶段等待<ul>
+<li>查到了轮询队列添加回调函数, 就去第一个情况执行</li>
+<li>如果定时器到点了, 也会去下一个阶段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>check 查阶段 重要<ul>
+<li>执行 setImmediate设置的回调函数</li>
+</ul>
+</li>
+<li>close  calbacks 关闭阶段<ul>
+<li>执行 close事件回调函数</li>
+</ul>
+</li>
+<li>node 中一个有六个宏任务 两个微任务队列<ul>
+<li>宏任务:  setTimeout  setInterval   Ajax  DOM事件监听</li>
+<li>微任务 Promise.then   async &#x2F; await  mutationobserve(H5)  processnextTick(Node)</li>
+</ul>
+</li>
+<li>宏任务队列:  用来保存 n 个宏任务队列容器</li>
+<li>微任务队列:  用来保存 n 个微任务队列容器</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>定时器延迟 bug</p>
+<ul>
+<li>定时器的第二个参数,  代表当前函数执行的延迟时间</li>
+<li>最小值为1  即便写 0  也会变成1</li>
+<li>现象是打印结果出现了 1  2  或者 2  1 </li>
+<li>原因:  因为定时器的延迟时间最小为 1ms  但是主线程的代码可能没有消耗到 1ms 导致到达timers 阶段的时候, 还没有满足执行条件,  所以会先执行 setImmediate的宏任务</li>
+<li>解决:  延长主线程代码时间,  让其超过 1ms 毫秒</li>
+</ul>
+<p>node 宏任务注意点:</p>
+<ul>
+<li>node 一共有 6 个阶段, 对应 6 个宏任务队列, 所以在 Node 查看执行顺序, 需要优先关注他们的阶段, 如果是同阶段的宏任务, 在看先后顺序</li>
+<li>node 事件轮询的起点是 1 号阶段(timers 阶段) 休息区 4 号阶段( I &#x2F; O阶段)<ul>
+<li>事件轮询不存在跳阶段的可能性, 一定从1 走完6 在从6 回到1 不断轮询</li>
+</ul>
+</li>
+</ul>
+<p>node 微任务部分</p>
+<ul>
+<li><p>node 中有两个微任务</p>
+<ul>
+<li><p>promise.then</p>
+<ul>
+<li>它与宏任务相比是 vip 级别</li>
+</ul>
+</li>
+<li><p>process.nextTick</p>
+<ul>
+<li>他与 .then 相比是 svip级别</li>
+</ul>
+<p>nextTick 会优先于 .then  而 .then 会优先于宏任务执行</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意: node 有两个微任务队列</p>
+<ul>
+<li>微任务队列需要清空之后, 才能切换到下一个队列的</li>
+</ul>
+</blockquote>
 
     </div>
 
