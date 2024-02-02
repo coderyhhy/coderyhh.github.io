@@ -706,6 +706,124 @@
 <li>微任务队列需要清空之后, 才能切换到下一个队列的</li>
 </ul>
 </blockquote>
+<h3 id="请问-JS-6个false-值是哪些"><a href="#请问-JS-6个false-值是哪些" class="headerlink" title="请问 JS , 6个false 值是哪些?"></a>请问 JS , 6个false 值是哪些?</h3><blockquote>
+<p>0  NaN  “”  false  undefined  null</p>
+</blockquote>
+<p>基本数据类型 VS 基本数据类型</p>
+<ul>
+<li><p>会发生类型转换</p>
+</li>
+<li><p>toNumber 所有的数据都会往数字转</p>
+<blockquote>
+<p>注意: 基本数据类型中,  undefined 和  null 两者互等, 和其他任何类型都不相等</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1&quot;</span> , <span class="literal">true</span> == <span class="number">1</span>)  <span class="comment">// true   1 === 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2&quot;</span>, <span class="literal">true</span> == <span class="string">&quot;1&quot;</span>)  <span class="comment">// true   1 === 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;2&quot;</span> == <span class="number">1</span>) <span class="comment">// false  2 === 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;4&quot;</span>, <span class="string">&quot;a&quot;</span> == <span class="number">1</span>)  <span class="comment">// false  NaN === 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;5&quot;</span>, <span class="literal">true</span> == <span class="string">&quot;true&quot;</span>)  <span class="comment">// false  1 === NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;6&quot;</span>, <span class="literal">true</span> == <span class="string">&quot;false&quot;</span>) <span class="comment">// false  1 === NaN</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;7&quot;</span>, [] == []) <span class="comment">// false  new Array() === new Array()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;8&quot;</span>, &#123;&#125; == &#123;&#125;) <span class="comment">// false  new Object() === new Object()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;9&quot;</span>, [] === []) <span class="comment">// false new Array() === new Array()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;10&quot;</span>, &#123;&#125; === &#123;&#125;) <span class="comment">// fasle new Object() === new Object()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;11&quot;</span>, [] !== []) <span class="comment">// true new Array() === new Array() </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;12&quot;</span>, &#123;&#125; !== &#123;&#125;) <span class="comment">// true new Object() === new Object()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;13&quot;</span>, [] ==![])  <span class="comment">// true [] == (![])   [] === false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;14&quot;</span>, &#123;&#125; ==!&#123;&#125;) <span class="comment">// false  &#123;&#125; == (!&#123;&#125;)   &#123;&#125; === false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;15&quot;</span>, <span class="number">0</span> == <span class="string">&quot;0&quot;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;16&quot;</span>, <span class="number">0</span> == []) <span class="comment">// ture</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;17&quot;</span>, <span class="string">&quot;0&quot;</span> == []) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>对象数据 VS 对象数据</p>
+<ul>
+<li>比较地址值即可, 地址值相同就是 true, 反之就是false</li>
+<li>语法糖</li>
+<li>[] -&gt; new Array()</li>
+<li>{} -&gt; new Object()</li>
+</ul>
+<p>对象数据类型 VS 基本数据类型</p>
+<ul>
+<li>使用 valueOf 方法</li>
+<li>使用 toString 方法</li>
+</ul>
+<h3 id="Promise-的理解"><a href="#Promise-的理解" class="headerlink" title="Promise 的理解"></a>Promise 的理解</h3><p>Promise数据类型</p>
+<ul>
+<li><p>函数(它是一个构造函数)</p>
+</li>
+<li><p>接收参数</p>
+<ul>
+<li>接收个数:  1个</li>
+<li>数据类型:  函数(又称为执行器函数)<ul>
+<li>同步调用执行器函数</li>
+<li>接收两个参数<ul>
+<li>resolve 函数<ul>
+<li>可以控制当前的 p1状态返回成功</li>
+</ul>
+</li>
+<li>reject 函数<ul>
+<li>可以控制当前 p1状态返回错误, 将其变为失败</li>
+<li>并且会在控制台报错</li>
+</ul>
+</li>
+<li>返回值: 全新的Promise 实例对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Promise 身上具有的重要属性</p>
+<ul>
+<li>state 状态<ul>
+<li>pending 等待中</li>
+<li>fulfiled 成功</li>
+<li>rejected 失败</li>
+</ul>
+</li>
+<li>注意:  promise对象的状态只能改变一次, 而且不可逆</li>
+<li>result 结果<ul>
+<li>可以通过给 resolve 或者 reject 方法传入实参, 来进行赋值控制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>.then</p>
+<ul>
+<li><p>用处: 可以监视某个 promise 对象状态变化, 并返回对应的回调函数</p>
+</li>
+<li><p>数据类型: 函数</p>
+</li>
+<li><p>接收参数: 两个</p>
+<ul>
+<li>数据类型: 函数</li>
+<li>第一个实参是成功的回调<ul>
+<li>如果监视的promise 变为成功状态, 那么就执行该回调函数</li>
+</ul>
+</li>
+<li>第二个实参是失败的回调<ul>
+<li>如果监视的promise 变为失败状态, 那么久执行该函数, 并且捕获控制台报错</li>
+</ul>
+</li>
+<li>注意: 无论是成功还是失败, 回调函数都可以通过声明形参来接受promise 对象的结果值</li>
+</ul>
+</li>
+<li><p>. then 的返回值</p>
+<ul>
+<li><p>Promise 对象,  简称 p2</p>
+</li>
+<li><p>如何控制 p2的状态</p>
+<ul>
+<li><p>变为成功</p>
+<ul>
+<li>只要回调函数中的代码, 成功执行结束就会变成 p24</li>
+<li>如果回调函数中的代码成功的promise 对象, 那么 p2 变为成功</li>
+</ul>
+</li>
+<li><p>变为失败</p>
+<ul>
+<li>只要回到函数中的代码, 出现报错, 无法执行结束, 那么 p2就会变成失败</li>
+<li>如果回调函数中返回失败的 promise对象, 那么 p2变为成功</li>
+</ul>
+</li>
+<li><p>继承状态</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
