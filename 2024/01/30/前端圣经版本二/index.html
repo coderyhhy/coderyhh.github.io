@@ -1033,7 +1033,15 @@
 </li>
 <li>在事件源身上绑定事件, 并将一个全新的函数作为事件真正的处理器</li>
 <li>在事件处理器中, 我们会判断当前目标元素是否符合选择器字符串的要求</li>
-<li>如果满足选择器字符串的要求, 就会使用 call方法调用全新函数的事件处理器, 否则</li>
+<li>如果满足选择器字符串的要求, 就会使用 call方法调用全新函数的事件处理器, 否则什么都不做</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bindEvent2</span>(<span class="params">ele, type, fn, selector</span>) &#123;</span><br><span class="line">     ele.<span class="title function_">addEventListener</span>(type, <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">       <span class="keyword">const</span> target = event.<span class="property">target</span></span><br><span class="line">       <span class="keyword">if</span>(selector) &#123;</span><br><span class="line">         <span class="keyword">if</span>(target.<span class="title function_">matches</span>(selector)) &#123;</span><br><span class="line">           fn.<span class="title function_">call</span>(target, event)</span><br><span class="line">         &#125;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         fn.<span class="title function_">call</span>(ele, event)</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="title function_">bindEvent2</span>(wrap, <span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>)</span><br><span class="line">   &#125;, <span class="string">&quot;.divs&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>什么地方用过</p>
+<ul>
+<li>首页三级列表联动</li>
 </ul>
 
     </div>
