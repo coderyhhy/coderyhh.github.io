@@ -35,7 +35,142 @@
     <div class="post-content">
         <h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p>xhr.status</p>
 <ul>
-<li>2xx 表示成功处理请求</li>
+<li>2xx 表示成功处理请求<ul>
+<li>200 表示本次请求完美成功</li>
+<li>201 表示本次请求成功, 但是参数不对</li>
+</ul>
+</li>
+<li>3xx 表示重定向,  浏览器直接跳转, 比如跳转到路径引到 404<ul>
+<li>302 表示重定向, 比如用户请求 A 链接, 服务器返回响应的时候, 引到浏览器跳转到 B 链接</li>
+<li>304 表示协商缓存, 比如说, 用户请求某个资源, 服务器发现浏览器上还存有该文件, 那么服务器就不会返回这个文件, 而且把响应码变为 304 告知浏览器继续使用内存中的那个资源, 可以减少请求消耗的时间, 加快页面展示速度</li>
+</ul>
+</li>
+<li>4xx 客户端请求错误<ul>
+<li>403 代表权限不够拒绝返回,  大概率是账号权限不够</li>
+<li>404 代表找不到该资源, 请求后端的接口或文件, 后端没有对应的资源, 那么就会返回 404</li>
+</ul>
+</li>
+<li>5xx 服务端错误<ul>
+<li>500 代表服务器崩溃无法处理该请求</li>
+<li>501 达标服务器无法处理该请求 请求方式不对</li>
+</ul>
+</li>
+</ul>
+<h3 id="区别-Ajax-请求与一般HTTP请求"><a href="#区别-Ajax-请求与一般HTTP请求" class="headerlink" title="区别 Ajax 请求与一般HTTP请求"></a>区别 Ajax 请求与一般HTTP请求</h3><p>注意:</p>
+<ul>
+<li>对服务端来说, 没有任何区别, 区别在浏览器端</li>
+<li>浏览器发出的请求, 只有 xhr 或fetch发出</li>
+<li>浏览器接受到响应<ul>
+<li>一般请求:  浏览器会直接显示响应体数据, 也就是我们常说的刷新跳转页面</li>
+<li>ajax 请求;  浏览器不会对界面进行更新操作, 只是调用监视的回调函数并传入响应相关数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="防抖节流"><a href="#防抖节流" class="headerlink" title="防抖节流"></a>防抖节流</h3><p>防抖和节流是什么</p>
+<ul>
+<li>它是 JS 代码的一种书写,  使用了它之后, 可以优化代码性能</li>
+</ul>
+<p>为什么要用防抖和节流</p>
+<ul>
+<li>某些函数, 在一段时间之内, 连续触发多次, 但是得到的效果是一样的, 浪费代码性能</li>
+<li>主要就是该按钮设计到发送请求之类的操作, 后端就会收到很多次请求, 会加大后端服务器压力</li>
+</ul>
+<p>解决方案</p>
+<ul>
+<li>尽可能降低这些函数的执行频率</li>
+</ul>
+<p>想要的效果</p>
+<ul>
+<li>在一段事件之内, 连续触发多次函数, 只会有一次生效</li>
+<li>防抖写法:<ul>
+<li>在一段时间之内, 连续触发多次函数, 最后一次触发会生效, 之前的触发都会取消</li>
+<li>在防抖开启的时候, 在一段时间之内, 如果由第二次开启防抖, 那么上一次取消</li>
+</ul>
+</li>
+<li>节流写法<ul>
+<li>在一段时间之内, 连续触发多次的函数, 第一次触发生效, 剩余的都会被取消</li>
+<li>在第一次触发之后, 在一定的时间内不能触发第二次</li>
+</ul>
+</li>
+<li>无论是防抖还是节流, 度可以设置一个时间段</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.<span class="property">onclikc</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用场景</p>
+<ul>
+<li>防抖和节流的区别<ul>
+<li><p>回调函数执行时机</p>
+<ul>
+<li>节流的回调函数会被立即执行 (没有延迟时间)</li>
+<li>防抖的回调函数会被延迟执行 (有一个定时器)</li>
+</ul>
+</li>
+<li><p>数据的时效性</p>
+<ul>
+<li><p>节流的数据时效性很差</p>
+<ul>
+<li>因为节流是多次触发中, 第一次生效,  所以它是用数据第一次数据</li>
+</ul>
+</li>
+<li><p>防抖时效性好</p>
+<ul>
+<li>因为防抖是很多次触发最后一次生效, 它能拿到最新的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>项目搜索框单词联想, 可以使用防抖,  可以对登录按钮使用节流写法, 因为用于在短时间内点击多次登录, 得到的效果是一样的</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="跨域相关"><a href="#跨域相关" class="headerlink" title="跨域相关"></a>跨域相关</h3><p>什么是跨域</p>
+<ul>
+<li><p>跨域就是违反浏览器的同源策略</p>
+</li>
+<li><p>同源策略是什么</p>
+<ul>
+<li><p>两个 url 的协议名, 域名, 端口 三者都相同, 那么说明这两个 url就是同源的</p>
+</li>
+<li><p>url 组成部分: 协议名 + 域名 + 端口号 + 查询字符串</p>
+<ul>
+<li>查询字符串是由接口路径 + 请求参数组合而成</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下两个链接协议名不同, 所以不同源</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:8000/home</span></span><br><span class="line"><span class="attr">ftp</span>:<span class="comment">//localhost:8000/home</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两个链接域名不同, 所以不同源</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:8000/home</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//127.0.0.1:8000/home</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两个链接只有查询字符串不同, 但是查询字符串不在判断之内, 所以同源</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:8000/home</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:8000/about</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>为什么要有跨域报错</p>
+<ul>
+<li>前言:  真网站 称为 A 网站,  假网站 称为 B网站</li>
+<li>如果跨域不报错, 会导致的结果, 用户在不知情的情况下, 请求了 B网站,  B网站返回HTML 文件给浏览器,  浏览器会自动解析执行该网页 JS 代码, JS 代码会使用 Ajax往 A 网站发送请求, 并将 A网站的 cookie携带 A发送网站得到cookie之后, 返回个人真实数据, 最终数据被 B网站接收</li>
+<li>这个过程中, 用户直接损失了个人的真实数据, 而 A 网站损失了用户</li>
+</ul>
+</li>
+<li><p>跨域一定报错吗</p>
+<ul>
+<li>不一定会报错</li>
+<li>服务器之间跨域不报错</li>
+<li>video  audio  link  script  img 等标签跨域也不会报错</li>
+<li>小总结:  跨域是一个动作, 它不一定会带来一个严重的后果</li>
+</ul>
+</li>
+<li><p>什么情况下会出现跨域问题</p>
+<ul>
+<li>在浏览器上会出现</li>
+<li>在发送 Ajax请求的时候, 才会出现</li>
+<li>小总结: 跨域问题是 浏览器搞的鬼</li>
+</ul>
+</li>
+<li><p>哪些请求算是 Ajax 请求 (ajax  async  JavaScript  and  xml)</p>
+<ul>
+<li>只有使用 JS 发送的请求才可能是 Ajax请求</li>
+<li>无论http 还是 Ajax, 服务器接受到的都是 HTTP 请求</li>
+<li>小总结:  Ajax 请求并不是一种特殊的请求, Ajax只是发送请求的技术</li>
+</ul>
+</li>
+<li></li>
 </ul>
 
     </div>
